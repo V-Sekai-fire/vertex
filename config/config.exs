@@ -52,8 +52,14 @@ config :vertex, :pow,
   cache_store_backend: Pow.Store.Backend.MnesiaCache
 
 config :vertex, :pow_assent,
-  user_identities_context: Vertex.UserIdentities,
-  providers: []
+  user_identities_context: Uro.UserIdentities,
+  providers: [
+    discord: [
+      client_id: System.get_env("DISCORD_CLIENT_ID", ""),
+      client_secret: System.get_env("DISCORD_CLIENT_SECRET", ""),
+      strategy: Assent.Strategy.Discord
+    ]
+  ]
 
 config :vertex, :phoenix_swagger,
   swagger_files: %{
