@@ -2,14 +2,10 @@ import Config
 
 db_hostname = System.get_env("URO_LOCAL_DB") || "localhost"
 
-# Configure your database
-config :uro, Uro.Repo,
-  adapter: Ecto.Adapaters.Postgres,
-  username: "root",
-  password: "",
-  port: "26257",
-  database: "uro_dev",
-  hostname: db_hostname,
+config :vertex, Vertex.Repo,
+  adapter: Ecto.Adapters.SQLite3,
+  database: "vertex_dev.sqlite3",
+  datetime_type: :text_datetime,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -19,7 +15,7 @@ config :uro, Uro.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :uro, UroWeb.Endpoint,
+config :vertex, VertexWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -58,13 +54,13 @@ config :uro, UroWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :uro, UroWeb.Endpoint,
+config :vertex, VertexWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/uro_web/(live|views)/.*(ex)$",
-      ~r"lib/uro_web/templates/.*(eex)$"
+      ~r"lib/vertex_web/(live|views)/.*(ex)$",
+      ~r"lib/vertex_web/templates/.*(eex)$"
     ]
   ]
 

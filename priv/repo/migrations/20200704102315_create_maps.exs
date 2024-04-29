@@ -1,8 +1,8 @@
-defmodule Uro.Repo.Migrations.CreateMaps do
+defmodule Vertex.Repo.Migrations.CreateMaps do
   use Ecto.Migration
 
   def change do
-    create table(:maps, primary_key: false) do
+    create table(:maps, primary_key: false, options: "STRICT, WITHOUT ROWID") do
       add :id, :uuid, primary_key: true
       add :name, :string
       add :description, :text

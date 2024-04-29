@@ -1,8 +1,8 @@
-defmodule Uro.Repo.Migrations.CreateAvatars do
+defmodule Vertex.Repo.Migrations.CreateAvatars do
   use Ecto.Migration
 
   def change do
-    create table(:avatars, primary_key: false) do
+    create table(:avatars, primary_key: false, options: "STRICT, WITHOUT ROWID") do
       add :id, :uuid, primary_key: true
       add :name, :string
       add :description, :text
